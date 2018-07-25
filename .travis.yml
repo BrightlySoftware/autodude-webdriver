@@ -9,6 +9,7 @@ git:
 script:
   - npm test
   - npm version patch -m "[CHORE] Bump Version %s [skip ci]"
+before_deploy:
   - git push https://$GITHUB_TOKEN@github.com/DudeSolutions/autodude-webdriver master
   - git push https://$GITHUB_TOKEN@github.com/DudeSolutions/autodude-webdriver --tags
 deploy:
