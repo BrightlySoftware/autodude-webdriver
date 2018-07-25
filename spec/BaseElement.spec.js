@@ -61,10 +61,6 @@ describe('Base Element', () => {
             testElement.find()
                 .then(() => expect(driver.findElement).toHaveBeenCalledWith(testLocator));
         });
-
-        it('should return a promise', () => {
-            expect(testElement.find()).toEqual(Promise.resolve())
-        });
     });
 
     describe('findChild method', () => {
@@ -79,10 +75,6 @@ describe('Base Element', () => {
                     expect(mockWebElementPromise.findElement).toHaveBeenCalledWith(childLocator);
                     expect(testElement.find).toHaveBeenCalled();
                 });
-        });
-
-        it('should return a promise', () => {
-            expect(testElement.findChild(new BaseElement(childLocator))).toEqual(Promise.resolve())
         });
     });
 
@@ -99,10 +91,6 @@ describe('Base Element', () => {
                     expect(testElement.find).toHaveBeenCalled();
                 });
         });
-
-        it('should return a promise', () => {
-            expect(testElement.findChild(new BaseElement(childLocator))).toEqual(Promise.resolve())
-        });
     });
 
     describe('findElements method', () => {
@@ -113,10 +101,6 @@ describe('Base Element', () => {
         it('should call the driver findElements method', () => {
             testElement.findElements()
                 .then(() => expect(driver.findElements).toHaveBeenCalledWith(testLocator));
-        });
-
-        it('should return a promise', () => {
-            expect(testElement.findElements()).toEqual(Promise.resolve());
         });
     });
 
@@ -154,10 +138,6 @@ describe('Base Element', () => {
                 })
                 .then(done, done.fail);
         });
-
-        it('should return a resolved promise', () => {
-            expect(testElement.click()).toEqual(Promise.resolve());
-        });
     });
 
     describe('getAttribute method', () => {
@@ -176,10 +156,6 @@ describe('Base Element', () => {
                 })
                 .then(done, done.fail);
         });
-
-        it('should return a promise', () => {
-            expect(testElement.getAttribute()).toEqual(Promise.resolve());
-        });
     });
 
     describe('getText method', () => {
@@ -197,10 +173,6 @@ describe('Base Element', () => {
                 })
                 .then(done, done.fail);
         });
-
-        it('should return a promise', () => {
-            expect(testElement.getText()).toEqual(Promise.resolve())
-        });
     });
 
     describe('scrollTo method', () => {
@@ -210,12 +182,8 @@ describe('Base Element', () => {
 
         it('should call the driver executeScript method and pass in the object', (done) => {
             testElement.scrollTo()
-                .then(() => expect(driver.executeScript).toHaveBeenCalledWith('arguments[0].scrollIntoView(true);', driver.findElement()))
+                .then(() => expect(driver.executeScript).toHaveBeenCalledWith('arguments[0].scrollIntoView(true);'))
                 .then(done, done.fail);
-        });
-
-        it('should return a promise', () => {
-            expect(testElement.scrollTo()).toEqual(Promise.resolve())
         });
     });
 
@@ -236,10 +204,6 @@ describe('Base Element', () => {
                 })
                 .then(done, done.fail);
         });
-
-        it('should return a promise', () => {
-            expect(testElement.sendKeys()).toEqual(Promise.resolve())
-        });
     });
 
     describe('setValue method', () => {
@@ -259,10 +223,6 @@ describe('Base Element', () => {
                 })
                 .then(done, done.fail);
         });
-
-        it('should return a promise', () => {
-            expect(testElement.setValue()).toEqual(Promise.resolve())
-        });
     });
 
     describe('waitFor method', () => {
@@ -272,10 +232,6 @@ describe('Base Element', () => {
             testElement.waitFor()
                 .then(() => expect(driver.wait).toHaveBeenCalled())
                 .then(done, done.fail);
-        });
-
-        it('should return a promise', () => {
-            expect(testElement.waitFor()).toEqual(Promise.resolve())
         });
     });
 
@@ -287,10 +243,6 @@ describe('Base Element', () => {
                 .then(() => expect(driver.wait).toHaveBeenCalled())
                 .then(done, done.fail);
         });
-
-        it('should return a promise', () => {
-            expect(testElement.waitForAttributeToExist()).toEqual(Promise.resolve());
-        });
     });
 
     describe('waitForElementCount method', () => {
@@ -300,10 +252,6 @@ describe('Base Element', () => {
             testElement.waitForElementCount()
                 .then(() => expect(driver.wait).toHaveBeenCalled())
                 .then(done, done.fail);
-        });
-
-        it('should return a promise', () => {
-            expect(testElement.waitForElementCount()).toEqual(Promise.resolve());
         });
     });
 
@@ -315,10 +263,6 @@ describe('Base Element', () => {
                 .then(() => expect(driver.wait).toHaveBeenCalled())
                 .then(done, done.fail);
         });
-
-        it('should return a promise', () => {
-            expect(testElement.waitForAttributeValue()).toEqual(Promise.resolve());
-        });
     });
 
     describe('waitForAttributeValueToContain method', () => {
@@ -329,10 +273,6 @@ describe('Base Element', () => {
                 .then(() => expect(driver.wait).toHaveBeenCalled())
                 .then(done, done.fail);
         });
-
-        it('should return a promise', () => {
-            expect(testElement.waitForAttributeValueToContain()).toEqual(Promise.resolve());
-        });
     });
 
     describe('waitForAttributeValueToNotContain method', () => {
@@ -342,10 +282,6 @@ describe('Base Element', () => {
             testElement.waitForAttributeValueToNotContain()
                 .then(() => expect(driver.wait).toHaveBeenCalled())
                 .then(done, done.fail);
-        });
-
-        it('should return a promise', () => {
-            expect(testElement.waitForAttributeValueToNotContain()).toEqual(Promise.resolve());
         });
     });
 
@@ -382,10 +318,6 @@ describe('Base Element', () => {
                     expect(mockWebElementPromise2.isDisplayed).toHaveBeenCalled();
                 })
                 .then(done, done.fail);
-        });
-
-        it('should return a resolved promise', () => {
-            expect(testElement.isDisplayed()).toEqual(Promise.resolve());
         });
     });
 });
