@@ -444,7 +444,7 @@ describe('Base Element', () => {
         });
 
         it('should return a resolved promise', () => {
-            expect(testElement.clear()).toEqual(Promise.resolve());
+            expect(testElement.clear().then).toBeTruthy();
         });
     });
 });
