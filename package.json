@@ -1,5 +1,5 @@
 {
-  "name": "autodude-webdriver",
+  "name": "@dude/autodude-webdriver",
   "version": "1.1.72",
   "description": "Dude Solutions Page Object Model framework for Webdriver",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/DudeSolutions/autodude-webdriver.git"
+    "url": "git+https://github.com/DudeSolutions/autodude-webdriver.git"
   },
   "devDependencies": {
     "jasmine-reporters": "^2.2.0"
@@ -18,5 +18,24 @@
   },
   "peerDependencies": {
     "selenium-webdriver": "^3.5.0"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/DudeSolutions/autodude-webdriver/issues"
+  },
+  "homepage": "https://github.com/DudeSolutions/autodude-webdriver#readme",
+  "directories": {
+    "lib": "lib"
+  },
+  "keywords": [
+    "selenium",
+    "webdriver",
+    "page",
+    "object",
+    "model",
+    "javascript",
+    "node",
+    "jasmine"
+  ],
+  "author": "Chris Godsey <godsey.chris@gmail.com> (https://github.com/chrisgodsey)",
+  "license": "MIT"
 }
