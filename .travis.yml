@@ -6,8 +6,9 @@ branches:
     - master
 git:
   branch: master
-script:
+before_script:
   - npm test
+script:
   - npm version patch -m "[CHORE] Bump Version %s [skip ci]"
   - git push https://$GITHUB_TOKEN@github.com/DudeSolutions/autodude-webdriver master
   - git push https://$GITHUB_TOKEN@github.com/DudeSolutions/autodude-webdriver --tags
@@ -16,6 +17,6 @@ deploy:
   email: $NPM_EMAIL
   api_key: $NPM_TOKEN
   on:
-    tags: false
+    tags: true
     branches:
       - master
