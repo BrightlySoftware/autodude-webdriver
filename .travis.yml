@@ -6,3 +6,11 @@ branches:
     - master
 git:
   branch: master
+deploy:
+  provider: npm
+  email: $NPM_EMAIL
+  api_key: $NPM_TOKEN
+  on:
+    tags: false
+    branches:
+      - master
