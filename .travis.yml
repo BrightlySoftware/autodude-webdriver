@@ -6,6 +6,8 @@ branches:
     - master
 git:
   branch: master
+script:
+  - npm version patch -m "[CHORE] Bump Version %s [skip ci]"
 deploy:
   provider: npm
   email: $NPM_EMAIL
