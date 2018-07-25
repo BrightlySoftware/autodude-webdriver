@@ -32,7 +32,8 @@ describe('Base Element', () => {
             getText: () => Promise.resolve(getTextTest),
             sendKeys: () => Promise.resolve(),
             setAttribute: () => Promise.resolve(),
-            isDisplayed: () => Promise.resolve()
+            isDisplayed: () => Promise.resolve(),
+            clear: () => Promise.resolve()
         };
 
         spyOn(mockWebElementPromise, 'click').and.callThrough();
@@ -43,6 +44,7 @@ describe('Base Element', () => {
         spyOn(mockWebElementPromise, 'sendKeys').and.callThrough();
         spyOn(mockWebElementPromise, 'setAttribute').and.callThrough();
         spyOn(mockWebElementPromise, 'isDisplayed').and.callThrough();
+        spyOn(mockWebElementPromise, 'clear').and.callThrough();
 
         spyOn(driver, 'executeScript').and.callThrough();
         spyOn(driver, 'findElement').and.callThrough();
@@ -61,6 +63,10 @@ describe('Base Element', () => {
             testElement.find()
                 .then(() => expect(driver.findElement).toHaveBeenCalledWith(testLocator));
         });
+
+        it('should return a promise', () => {
+            expect(testElement.find().then).toBeTruthy();
+        });
     });
 
     describe('findChild method', () => {
@@ -75,6 +81,10 @@ describe('Base Element', () => {
                     expect(mockWebElementPromise.findElement).toHaveBeenCalledWith(childLocator);
                     expect(testElement.find).toHaveBeenCalled();
                 });
+        });
+
+        it('should return a promise', () => {
+            expect(testElement.findChild(new BaseElement(childLocator)).then).toBeTruthy();
         });
     });
 
@@ -91,6 +101,10 @@ describe('Base Element', () => {
                     expect(testElement.find).toHaveBeenCalled();
                 });
         });
+
+        it('should return a promise', () => {
+            expect(testElement.findChild(new BaseElement(childLocator)).then).toBeTruthy();
+        });
     });
 
     describe('findElements method', () => {
@@ -101,6 +115,10 @@ describe('Base Element', () => {
         it('should call the driver findElements method', () => {
             testElement.findElements()
                 .then(() => expect(driver.findElements).toHaveBeenCalledWith(testLocator));
+        });
+
+        it('should return a promise', () => {
+            expect(testElement.findElements().then).toBeTruthy();
         });
     });
 
@@ -138,6 +156,26 @@ describe('Base Element', () => {
                 })
                 .then(done, done.fail);
         });
+
+        it('should return a resolved promise', () => {
+            expect(testElement.click().then).toBeTruthy();
+        });
+    });
+
+    describe('clickWhenClickable method', () => {
+        beforeEach(() => {
+            expect(driver.wait).not.toHaveBeenCalled();
+        });
+
+        it('should call the driver waitFor method', (done) => {
+            testElement.clickWhenClickable()
+                .then(() => expect(driver.wait).toHaveBeenCalled())
+                .then(done, done.fail);
+        });
+
+        it('should return a promise', () => {
+            expect(testElement.waitFor().then).toBeTruthy();
+        });
     });
 
     describe('getAttribute method', () => {
@@ -156,6 +194,11 @@ describe('Base Element', () => {
                 })
                 .then(done, done.fail);
         });
+
+        it('should return a promise', () => {
+            expect(testElement.getAttribute().then).toBeTruthy();
+
+        });
     });
 
     describe('getText method', () => {
@@ -173,6 +216,10 @@ describe('Base Element', () => {
                 })
                 .then(done, done.fail);
         });
+
+        it('should return a promise', () => {
+            expect(testElement.getText().then).toBeTruthy();
+        });
     });
 
     describe('scrollTo method', () => {
@@ -182,8 +229,12 @@ describe('Base Element', () => {
 
         it('should call the driver executeScript method and pass in the object', (done) => {
             testElement.scrollTo()
-                .then(() => expect(driver.executeScript).toHaveBeenCalledWith('arguments[0].scrollIntoView(true);'))
+                .then(() => expect(driver.executeScript.calls.mostRecent().args[0]).toBe('arguments[0].scrollIntoView(true);'))
                 .then(done, done.fail);
+        });
+
+        it('should return a promise', () => {
+            expect(testElement.scrollTo().then).toBeTruthy();
         });
     });
 
@@ -204,6 +255,10 @@ describe('Base Element', () => {
                 })
                 .then(done, done.fail);
         });
+
+        it('should return a promise', () => {
+            expect(testElement.sendKeys().then).toBeTruthy();
+        });
     });
 
     describe('setValue method', () => {
@@ -223,6 +278,10 @@ describe('Base Element', () => {
                 })
                 .then(done, done.fail);
         });
+
+        it('should return a promise', () => {
+            expect(testElement.setValue().then).toBeTruthy();
+        });
     });
 
     describe('waitFor method', () => {
@@ -232,6 +291,10 @@ describe('Base Element', () => {
             testElement.waitFor()
                 .then(() => expect(driver.wait).toHaveBeenCalled())
                 .then(done, done.fail);
+        });
+
+        it('should return a promise', () => {
+            expect(testElement.waitFor().then).toBeTruthy();
         });
     });
 
@@ -243,6 +306,10 @@ describe('Base Element', () => {
                 .then(() => expect(driver.wait).toHaveBeenCalled())
                 .then(done, done.fail);
         });
+
+        it('should return a promise', () => {
+            expect(testElement.waitForAttributeToExist().then).toBeTruthy();
+        });
     });
 
     describe('waitForElementCount method', () => {
@@ -252,6 +319,10 @@ describe('Base Element', () => {
             testElement.waitForElementCount()
                 .then(() => expect(driver.wait).toHaveBeenCalled())
                 .then(done, done.fail);
+        });
+
+        it('should return a promise', () => {
+            expect(testElement.waitForElementCount().then).toBeTruthy();
         });
     });
 
@@ -263,6 +334,10 @@ describe('Base Element', () => {
                 .then(() => expect(driver.wait).toHaveBeenCalled())
                 .then(done, done.fail);
         });
+
+        it('should return a promise', () => {
+            expect(testElement.waitForAttributeValue().then).toBeTruthy();
+        });
     });
 
     describe('waitForAttributeValueToContain method', () => {
@@ -273,6 +348,10 @@ describe('Base Element', () => {
                 .then(() => expect(driver.wait).toHaveBeenCalled())
                 .then(done, done.fail);
         });
+
+        it('should return a promise', () => {
+            expect(testElement.waitForAttributeValueToContain().then).toBeTruthy();
+        });
     });
 
     describe('waitForAttributeValueToNotContain method', () => {
@@ -282,6 +361,10 @@ describe('Base Element', () => {
             testElement.waitForAttributeValueToNotContain()
                 .then(() => expect(driver.wait).toHaveBeenCalled())
                 .then(done, done.fail);
+        });
+
+        it('should return a promise', () => {
+            expect(testElement.waitForAttributeValueToNotContain().then).toBeTruthy();
         });
     });
 
@@ -318,6 +401,50 @@ describe('Base Element', () => {
                     expect(mockWebElementPromise2.isDisplayed).toHaveBeenCalled();
                 })
                 .then(done, done.fail);
+        });
+
+        it('should return a resolved promise', async () => {
+            expect(testElement.isDisplayed().then).toBeTruthy();
+        });
+    });
+    
+    describe('clear method', () => {
+        let mockWebElementPromise2;
+
+        beforeEach(() => {
+            mockWebElementPromise2 = {
+                clear: () => Promise.resolve()
+            };
+
+            spyOn(mockWebElementPromise2, 'clear').and.callThrough();
+            expect(mockWebElementPromise.clear).not.toHaveBeenCalled();
+            expect(mockWebElementPromise2.clear).not.toHaveBeenCalled();
+
+            testElement.findElements = () => Promise.resolve([mockWebElementPromise, mockWebElementPromise2]);
+            spyOn(testElement, 'findElements').and.callThrough();
+        });
+
+        it('should call the WebElementPromise clear method for the 0th element by default', (done) => {
+            testElement.clear()
+                .then(() => {
+                    expect(mockWebElementPromise.clear).toHaveBeenCalled();
+                    expect(mockWebElementPromise2.clear).not.toHaveBeenCalled();
+                    expect(testElement.findElements).toHaveBeenCalled();
+                })
+                .then(done, done.fail);
+        });
+
+        it('should call the WebElementPromise clear method for the element in the argument', (done) => {
+            testElement.clear(1)
+                .then(() => {
+                    expect(mockWebElementPromise.clear).not.toHaveBeenCalled();
+                    expect(mockWebElementPromise2.clear).toHaveBeenCalled();
+                })
+                .then(done, done.fail);
+        });
+
+        it('should return a resolved promise', () => {
+            expect(testElement.clear()).toEqual(Promise.resolve());
         });
     });
 });
