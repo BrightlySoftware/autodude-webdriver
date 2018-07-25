@@ -15,3 +15,4 @@ Inside of your test directory, create a base page for your application that exte
 Any interaction with elements that is unique to your application should be created in a class that extends BaseElement.
 
 ## Setup -- TODO add this to npm registry
+npm install @dudesolutions/autodude-webdriver
