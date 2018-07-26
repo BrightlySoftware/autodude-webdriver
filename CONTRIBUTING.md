@@ -28,7 +28,9 @@ Please write meaningful commit messages - they are used to generate the changelo
 Testing your changes
 --------------------
 Running unit tests should be as simple as:
+
 npm install
+
 npm test
 
 If there's enough interest, we may look to building an application with some very small e2e tests just to validate functionality of the underlying methods that consume Selenium-Webdriver
