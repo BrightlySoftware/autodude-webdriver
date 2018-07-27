@@ -17,6 +17,12 @@ changeBuildType(RelativeId("Build")) {
     }
     name = "Build Test Publish"
 
+    params {
+        add {
+            param("teamcity.build.branch", "master")
+        }
+    }
+
     vcs {
 
         check(checkoutMode == CheckoutMode.AUTO) {
