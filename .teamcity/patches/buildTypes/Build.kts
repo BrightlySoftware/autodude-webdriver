@@ -19,6 +19,9 @@ changeBuildType(RelativeId("Build")) {
 
     params {
         add {
+            password("GITHUB_TOKEN", "credentialsJSON:96f9f0d5-4c9c-4ef8-9e44-eb07de16ea75", display = ParameterDisplay.HIDDEN)
+        }
+        add {
             param("teamcity.build.branch", "master")
         }
     }
