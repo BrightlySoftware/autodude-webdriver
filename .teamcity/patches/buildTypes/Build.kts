@@ -71,9 +71,9 @@ changeBuildType(RelativeId("Build")) {
                 scriptMode = script {
                     content = """
                         ${'$'}env:path += ";" + (Get-Item "Env:ProgramFiles").Value + "\Git\bin"
-                        
-                        
                         npm version patch -m "[CHORE] Bump Version %s [skip ci]"
+                        git push https://%GITHUB_TOKEN%@github.com/DudeSolutions/dudewind master
+                        git push https://%GITHUB_TOKEN%@github.com/DudeSolutions/dudewind --tags
                     """.trimIndent()
                 }
             }
