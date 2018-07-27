@@ -43,8 +43,8 @@ create(DslContext.projectId, BuildType({
                 content = """
                     ${'$'}env:path += ";" + (Get-Item "Env:ProgramFiles").Value + "\Git\bin"
                     
-                    git push master
-                    git push --tags
+                    git push origin master
+                    git push origin --tags
                 """.trimIndent()
             }
         }
