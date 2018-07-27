@@ -16,6 +16,14 @@ changeBuildType(RelativeId("Build")) {
     }
     name = "Build and Package"
 
+    vcs {
+
+        check(checkoutMode == CheckoutMode.AUTO) {
+            "Unexpected option value: checkoutMode = $checkoutMode"
+        }
+        checkoutMode = CheckoutMode.ON_AGENT
+    }
+
     expectSteps {
     }
     steps {
