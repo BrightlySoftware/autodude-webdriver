@@ -69,7 +69,12 @@ changeBuildType(RelativeId("Build")) {
             powerShell {
                 name = "NPM Patch"
                 scriptMode = script {
-                    content = """npm version patch -m "[CHORE] Bump Version %s [skip ci]""""
+                    content = """
+                        ${'$'}env:path += ";" + (Get-Item "Env:ProgramFiles").Value + "\Git\bin"
+                        
+                        
+                        npm version patch -m "[CHORE] Bump Version %s [skip ci]"
+                    """.trimIndent()
                 }
             }
         }
