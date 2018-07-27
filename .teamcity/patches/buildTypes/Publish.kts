@@ -21,6 +21,16 @@ create(DslContext.projectId, BuildType({
 
     steps {
         powerShell {
+            name = "Setup Git Config"
+            scriptMode = script {
+                content = """
+                    git config --global push.default simple
+                    git config --global user.email "team.city@dudesoln.com"
+                    git config --global user.name "Team City"
+                """.trimIndent()
+            }
+        }
+        powerShell {
             name = "NPM Version Patch"
             scriptMode = script {
                 content = """npm version patch -m "[CHORE] Bump version %s""""
@@ -32,16 +42,6 @@ create(DslContext.projectId, BuildType({
                 content = """
                     git push master
                     git push --tags
-                """.trimIndent()
-            }
-        }
-        powerShell {
-            name = "Setup Git Config"
-            scriptMode = script {
-                content = """
-                    git config --global push.default simple
-                    git config --global user.email "team.city@dudesoln.com"
-                    git config --global user.name "Team City"
                 """.trimIndent()
             }
         }
