@@ -33,6 +33,8 @@ changeBuildType(RelativeId("Build")) {
                 edition = PowerShellStep.Edition.Desktop
                 scriptMode = script {
                     content = """
+                        ${'$'}env:path += ";" + (Get-Item "Env:ProgramFiles").Value + "\Git\bin"
+                        
                         git config --global push.default simple
                         git config --global user.email "team.city@dudesoln.com"
                         git config --global user.name "Team City"
