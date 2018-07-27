@@ -40,5 +40,13 @@ changeBuildType(RelativeId("Build")) {
                 }
             }
         }
+        insert(2) {
+            powerShell {
+                name = "NPM Test"
+                scriptMode = script {
+                    content = "npm test"
+                }
+            }
+        }
     }
 }
