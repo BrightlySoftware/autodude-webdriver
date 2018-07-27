@@ -2,6 +2,7 @@ package patches.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.v2018_1.*
 import jetbrains.buildServer.configs.kotlin.v2018_1.BuildType
+import jetbrains.buildServer.configs.kotlin.v2018_1.buildSteps.powerShell
 import jetbrains.buildServer.configs.kotlin.v2018_1.triggers.finishBuildTrigger
 import jetbrains.buildServer.configs.kotlin.v2018_1.ui.*
 
@@ -16,6 +17,15 @@ create(DslContext.projectId, BuildType({
 
     vcs {
         root(DslContext.settingsRoot)
+    }
+
+    steps {
+        powerShell {
+            name = "NPM Version Patch"
+            scriptMode = script {
+                content = """npm version patch -m "[CHORE] Bump version %s""""
+            }
+        }
     }
 
     triggers {
