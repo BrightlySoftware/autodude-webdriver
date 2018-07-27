@@ -40,6 +40,7 @@ create(DslContext.projectId, BuildType({
         }
         powerShell {
             name = "Push"
+            enabled = false
             scriptMode = script {
                 content = """
                     ${'$'}env:path += ";" + (Get-Item "Env:ProgramFiles").Value + "\Git\bin"
