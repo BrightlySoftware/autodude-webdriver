@@ -60,9 +60,9 @@ changeBuildType(RelativeId("Build")) {
         }
         insert(3) {
             powerShell {
-                name = "NPM Test (1)"
+                name = "NPM Patch"
                 scriptMode = script {
-                    content = "npm test"
+                    content = """npm version patch -m "[CHORE] Bump Version %s [skip ci]""""
                 }
             }
         }
