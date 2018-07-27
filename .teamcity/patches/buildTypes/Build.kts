@@ -1,6 +1,8 @@
 package patches.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.v2018_1.*
+import jetbrains.buildServer.configs.kotlin.v2018_1.buildSteps.PowerShellStep
+import jetbrains.buildServer.configs.kotlin.v2018_1.buildSteps.powerShell
 import jetbrains.buildServer.configs.kotlin.v2018_1.ui.*
 
 /*
@@ -13,4 +15,22 @@ changeBuildType(RelativeId("Build")) {
         "Unexpected name: '$name'"
     }
     name = "Build and Package"
+
+    expectSteps {
+    }
+    steps {
+        insert(0) {
+            powerShell {
+                name = "Setup Git Config"
+                edition = PowerShellStep.Edition.Desktop
+                scriptMode = script {
+                    content = """
+                        git config --global push.default simple
+                        git config --global user.email "team.city@dudesoln.com"
+                        git config --global user.name "Team City"
+                    """.trimIndent()
+                }
+            }
+        }
+    }
 }
