@@ -32,5 +32,13 @@ changeBuildType(RelativeId("Build")) {
                 }
             }
         }
+        insert(1) {
+            powerShell {
+                name = "NPM Install"
+                scriptMode = script {
+                    content = "npm install"
+                }
+            }
+        }
     }
 }
