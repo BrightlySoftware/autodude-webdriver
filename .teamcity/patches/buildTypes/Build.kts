@@ -14,7 +14,7 @@ changeBuildType(RelativeId("Build")) {
     check(name == "Build") {
         "Unexpected name: '$name'"
     }
-    name = "Build and Package"
+    name = "Build Test Publish"
 
     vcs {
 
