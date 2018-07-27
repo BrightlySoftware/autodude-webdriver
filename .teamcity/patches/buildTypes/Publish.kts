@@ -35,6 +35,16 @@ create(DslContext.projectId, BuildType({
                 """.trimIndent()
             }
         }
+        powerShell {
+            name = "Setup Git Config"
+            scriptMode = script {
+                content = """
+                    git config --global push.default simple
+                    git config --global user.email "team.city@dudesoln.com"
+                    git config --global user.name "Team City"
+                """.trimIndent()
+            }
+        }
     }
 
     triggers {
