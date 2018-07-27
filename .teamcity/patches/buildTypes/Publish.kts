@@ -26,6 +26,15 @@ create(DslContext.projectId, BuildType({
                 content = """npm version patch -m "[CHORE] Bump version %s""""
             }
         }
+        powerShell {
+            name = "Push"
+            scriptMode = script {
+                content = """
+                    git push master
+                    git push --tags
+                """.trimIndent()
+            }
+        }
     }
 
     triggers {
