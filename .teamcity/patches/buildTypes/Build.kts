@@ -86,6 +86,7 @@ changeBuildType(RelativeId("Build")) {
     features {
         add {
             merge {
+                enabled = false
                 branchFilter = "+:<default>"
             }
         }
