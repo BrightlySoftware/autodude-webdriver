@@ -60,6 +60,7 @@ create(DslContext.projectId, BuildType({
     features {
         merge {
             branchFilter = "+:<default>"
+            destinationBranch = "master"
         }
     }
 }))
