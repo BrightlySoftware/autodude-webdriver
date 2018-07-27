@@ -1,6 +1,7 @@
 package patches.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.v2018_1.*
+import jetbrains.buildServer.configs.kotlin.v2018_1.buildFeatures.merge
 import jetbrains.buildServer.configs.kotlin.v2018_1.buildSteps.PowerShellStep
 import jetbrains.buildServer.configs.kotlin.v2018_1.buildSteps.powerShell
 import jetbrains.buildServer.configs.kotlin.v2018_1.ui.*
@@ -64,6 +65,14 @@ changeBuildType(RelativeId("Build")) {
                 scriptMode = script {
                     content = """npm version patch -m "[CHORE] Bump Version %s [skip ci]""""
                 }
+            }
+        }
+    }
+
+    features {
+        add {
+            merge {
+                branchFilter = "+:<default>"
             }
         }
     }
