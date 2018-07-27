@@ -2,6 +2,7 @@ package patches.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.v2018_1.*
 import jetbrains.buildServer.configs.kotlin.v2018_1.BuildType
+import jetbrains.buildServer.configs.kotlin.v2018_1.buildFeatures.merge
 import jetbrains.buildServer.configs.kotlin.v2018_1.buildSteps.powerShell
 import jetbrains.buildServer.configs.kotlin.v2018_1.triggers.finishBuildTrigger
 import jetbrains.buildServer.configs.kotlin.v2018_1.ui.*
@@ -53,6 +54,12 @@ create(DslContext.projectId, BuildType({
     triggers {
         finishBuildTrigger {
             buildTypeExtId = "AutodudeWebdriver_Build"
+        }
+    }
+
+    features {
+        merge {
+            branchFilter = "+:<default>"
         }
     }
 }))
