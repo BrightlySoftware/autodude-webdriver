@@ -93,7 +93,10 @@ changeBuildType(RelativeId("Build")) {
             }
         }
         trigger1.apply {
-            branchFilter = "-:user=team.city;"
+            branchFilter = """
+                +:<default>;
+                -:user=team.city;
+            """.trimIndent()
         }
     }
 
