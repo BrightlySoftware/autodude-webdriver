@@ -24,7 +24,7 @@ changeBuildType(RelativeId("Build")) {
             password("GITHUB_TOKEN", "credentialsJSON:96f9f0d5-4c9c-4ef8-9e44-eb07de16ea75", display = ParameterDisplay.HIDDEN)
         }
         add {
-            password("NPM_TOKEN", "credentialsJSON:00cdce7f-f743-4931-83e6-cd819063aade", display = ParameterDisplay.HIDDEN)
+            password("NPM_TOKEN", "credentialsJSON:6eef66e5-e9da-4b04-b325-6198edef367f", display = ParameterDisplay.HIDDEN)
         }
     }
 
