@@ -4,6 +4,8 @@ import jetbrains.buildServer.configs.kotlin.v2018_1.*
 import jetbrains.buildServer.configs.kotlin.v2018_1.buildFeatures.merge
 import jetbrains.buildServer.configs.kotlin.v2018_1.buildSteps.PowerShellStep
 import jetbrains.buildServer.configs.kotlin.v2018_1.buildSteps.powerShell
+import jetbrains.buildServer.configs.kotlin.v2018_1.triggers.VcsTrigger
+import jetbrains.buildServer.configs.kotlin.v2018_1.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.v2018_1.ui.*
 
 /*
@@ -82,6 +84,16 @@ changeBuildType(RelativeId("Build")) {
                     """.trimIndent()
                 }
             }
+        }
+    }
+
+    triggers {
+        val trigger1 = find<VcsTrigger> {
+            vcs {
+            }
+        }
+        trigger1.apply {
+            branchFilter = "-:user=team.city;"
         }
     }
 
