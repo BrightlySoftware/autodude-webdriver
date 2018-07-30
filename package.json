@@ -1,6 +1,6 @@
 {
   "name": "@dudesolutions/autodude-webdriver",
-  "version": "1.1.84",
+  "version": "1.1.85",
   "description": "Dude Solutions Page Object Model framework for Webdriver",
   "main": "index.js",
   "scripts": {
