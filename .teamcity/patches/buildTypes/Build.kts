@@ -74,7 +74,9 @@ changeBuildType(RelativeId("Build")) {
                 scriptMode = script {
                     content = """
                         ${'$'}env:path += ";" + (Get-Item "Env:ProgramFiles").Value + "\Git\bin"
+                        npm config set "//registry.npmjs.org/:_authToken" "%NPM_TOKEN%"
                         npm version patch -m "[CHORE] Bump Version %s [skip ci]"
+                        npm publish
                         git push https://%GITHUB_TOKEN%@github.com/DudeSolutions/autodude-webdriver master
                         git push https://%GITHUB_TOKEN%@github.com/DudeSolutions/autodude-webdriver --tags
                     """.trimIndent()
